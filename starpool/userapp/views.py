@@ -16,3 +16,28 @@ def signup(request):
             return redirect('/')
         
     return render(request, 'signup.html')
+
+
+def login(request):
+    if request.method=='POST':
+        email=request.POST['email']
+        password=request.POST['password']
+        user=authenticate(request,email=email, password=password)
+
+        if user is not None:
+            auth.login(request,user)
+            return redirect('test')
+        else:
+            # 로그인 실패 시
+            return render(request, 'login.html',{'error':'user info is not correct'})
+    
+    else:
+        # GET 메소드일 시
+        return render(request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('test')
+
+def test(request):
+    return render(request,'test.html')
