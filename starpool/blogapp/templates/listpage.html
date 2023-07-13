@@ -1,11 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/listpage.css'%}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/listpage.css' %}" />
     <title>listpage</title>
 </head>
 
@@ -20,7 +22,7 @@
     <wrapper>
         <!-- 공모전 카테고리 및 이름 -->
         <div class="contest-info-container">
-            <a href=""><img src="./img/back-icon.png" alt="뒤로가기" class="back-icon-img" /></a>
+            <a href="{% url 'blog:home' %}"><img src="{% static 'img/back-icon.png' %}" alt="뒤로가기" class="back-icon-img" onclick="goToMainPage()"/></a>
             <div class="category">기획/아이디어</div>
             <div class="contest-name">2023 아이디어톤</div>
         </div>
@@ -69,6 +71,13 @@
     <div id="footer">
         <a id="copy">Copyright © Star pool 2023</a>
     </div>
+
+    <script>
+        // 뒤로가기 버튼 클릭시 메인페이지
+        function goToMainPage() {
+            location.href = "{% url 'blog:home' %}";
+        }
+    </script>
 </body>
 
 </html>

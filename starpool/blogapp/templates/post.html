@@ -20,7 +20,8 @@
         </div>
         <div id="gridsection">
             <a id="kind">기획/아이디어</a>
-            <div id="title">{{post.title}}</div>
+            <div id="title">
+                <a href="{% url 'blog:detail' post.id %}">{{post.title}}</a></div>
             <a id="num">4</a>
             <a id="day"><i class="fa-solid fa-alarm-clock"></i>{{post.date}}</a>
         </div>
