@@ -42,5 +42,5 @@ class UserChangeForm(forms.ModelForm):
 class CustomUserChangeForm(UserChangeForm):
     # 일반 사용자 권한
     class Meta:
-        model=get_user_model()
+        model=get_user_model() # 현재 활성화된 사용자 모델을 반환
         fields=('name', 'profile_img','portfolio','school','bio','star','review')

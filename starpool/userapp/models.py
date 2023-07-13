@@ -19,6 +19,7 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, name, email, password):
+        # create_user의 인자와 동일해야함
         user=self.create_user(
             email,
             name=name,

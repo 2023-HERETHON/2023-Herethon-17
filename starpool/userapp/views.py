@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate
 from .models import User
 from django.shortcuts import render, redirect
 from .forms import CustomUserChangeForm
+from django.contrib.auth.hashers import check_password
+from django.contrib import messages,auth
 
 def signup(request):
     if request.method=='POST':
@@ -60,3 +62,25 @@ def update(request):
         'form':form,
     }
     return render(request, 'update.html',context)
+
+def change_password(request):
+    if request.method=='POST':
+        user=request.user
+        origin_password=request.POST['origin_password']
+        if check_password(origin_password,user.password):
+            password1=request.POST["password1"]
+            password2=request.POST["password2"]
+
+            if password1==password2:
+                user.set_password(password1)
+                user.save()
+                auth.login(request,user)
+                return redirect('myinfo')
+            else:
+                messages.error(request,'비밀번호가 일치하지 않습니다.')
+        
+        else:
+            messages.error(request,'비밀번호가 맞지 않습니다.')
+    
+    return render(request,'change_password.html')
+    
