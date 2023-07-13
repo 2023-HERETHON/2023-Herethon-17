@@ -21,5 +21,5 @@ from blogapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blogapp/', include('blogapp.urls', namespace='blog')),
+    path('main/', include('blogapp.urls', namespace='blog')),
 ]
