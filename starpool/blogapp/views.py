@@ -1,11 +1,11 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Post
+from django.http import HttpResponse
 
 def home(request):
-    return render(request, 'mainPage.html')
-
-# Post페이지로 넘어올 땐 게시글 번호 필요함
-def post(request): 
-    return render(request, 'post.html')
+    posts = Post.objects.all().order_by('-id') # admin에서 생성한 공모전 post 개체 생성 
+    return render(request, 'mainpage.html', {'posts':posts})
 
 def detail(request):
     return render(request, 'postDetail.html')
