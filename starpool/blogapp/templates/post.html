@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title></title>
+    <link href="{% static 'css/mainpage.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="gridgrid">
+        <div class="grid-item {% cycle 'item1' 'item2' %}">
+            <!--이미지 출력-->
+            <!-- 이미지 출력이 안됨(db에는 문제없이 잘 저장됨)-->
+            {% if post.image %}
+                <img src="{{ post.image.url }}">
+            {% endif %}
+        </div>
+        <div id="gridsection">
+            <a id="kind">기획/아이디어</a>
+            <div id="title">{{post.title}}</div>
+            <a id="num">4</a>
+            <a id="day"><i class="fa-solid fa-alarm-clock"></i>{{post.date}}</a>
+        </div>
+    </div>
+</body>
+
+</html>
