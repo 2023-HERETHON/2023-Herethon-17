@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/listpage.css" />
+    <title>listpage</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo">starpool</div>
+        <div id="mainpage"><a href="">Main Page</a></div>
+        <div id="mypage"><a href="">My Page</a></div>
+        <div id="login"><a href="">Log In</a></div>
+    </div>
+
+    <wrapper>
+        <!-- 공모전 카테고리 및 이름 -->
+        <div class="contest-info-container">
+            <a href=""><img src="./img/back-icon.png" alt="뒤로가기" class="back-icon-img" /></a>
+            <div class="category">기획/아이디어</div>
+            <div class="contest-name">2023 아이디어톤</div>
+        </div>
+
+        <div class="post-container">
+            <!-- 게시글 등록창 -->
+            <div id="input-post">
+                <div id="userinfo">
+                    <img src="./img/profile.png" alt="프로필" class="profile-img" />
+                    <div>
+                        <span>사용자 이름</span>
+                        <div class="posttime">2023/07/12</div>
+                    </div>
+                    <!-- 평가 코드 -->
+                    <div class="code-input-text">평가 코드 설정</div>
+                    <input type="text" class="code-input" />
+                </div>
+                <!-- 게시글 내용 입력 -->
+                <input type="text" placeholder="내용을 입력하세요..." class="content-input" />
+                <hr />
+                <!-- 게시글 등록 버튼 -->
+                <button type="submit">등록</button>
+            </div>
+
+            <!-- 게시글 -->
+            <div id="post">
+                <div id="userinfo">
+                    <a href="userpage.html" class="profile-img"><img src="./img/profile.png" alt="프로필" /></a>
+                    <div>
+                        <span>사용자 이름</span>
+                        <div class="posttime">2023/07/12</div>
+                    </div>
+                    <div class="grade-text">평균 평점</div>
+                    <!-- 평가자가 남긴 평점의 평균이 숫자로 띄워집니다 -->
+                    <div class="grade">3.5</div>
+                </div>
+                <hr />
+                <!-- 게시글에 입력한 내용이 뜹니다 -->
+                <div class="content">내용</div>
+                <button onclick="location.href='commentpage.html'">평가 보기</button>
+                <hr />
+            </div>
+        </div>
+    </wrapper>
+
+    <div id="footer">
+        <a id="copy">Copyright © Star pool 2023</a>
+    </div>
+</body>
+
+</html>

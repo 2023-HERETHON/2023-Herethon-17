@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title></title>
+    <link rel="stylesheet" href="mainpage.css" />
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo">starpool</div>
+        <div id="mainpage"><a href="">Main Page</a></div>
+        <div id="mypage"><a href="">My Page</a></div>
+        <div id="login"><a href="">Log In</a></div>
+    </div>
+    <div id="wrap">
+        <div id="aside">
+            <input type="text" id="search" placeholder="   공모전 검색"><a>돋보기 아이콘</a></input>
+            <div id="s1"><a>기획/아이디어</a></div>
+            <div id="s2"><a>영상/UCC/사진</a></div>
+            <div id="s3"><a>광고/마케팅</a></div>
+            <div id="s4"><a>디자인/캐릭터/웹툰</a></div>
+            <div id="s5"><a>웹/모바일/플래시</a></div>
+            <div id="s6"><a>논문/리포트</a></div>
+            <div id="s7"><a>네이밍/슬로건</a></div>
+            <div id="s8"><a>게임/소프트웨어</a></div>
+        </div>
+
+        <div id="grid-container" style="overflow-x:hidden; height:830px; width:1100px;">
+            <div id="gridgrid">
+                <!-- 제가 장고 템플릿은 잘 모르지만 데이터가 들어오는 순서에 따라 이미지 크기가 다르게 들어갈거라서  -->
+                <!-- 이렇게 작성해보았습니다! 백 분들께서 알맞게 다시 고쳐 주시면 좋을 것 같아요! -->
+                {% for index, image in images %}
+                <div class="grid-item {% cycle 'item1' 'item2' %}">
+                    <img src="{{ image.url }}">
+                </div>
+                {% endfor %}
+                <div id="gridsection">
+                    <a id="kind">기획/아이디어</a>
+                    <div id="title">공모전 제목</div>
+                    <a id="num">4</a>
+                    <a id="day"><i class="fa-solid fa-alarm-clock"></i>2023.07.04~2023.07.11</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <a id="copy">Copyright © Star pool 2023</a>
+    </div>
+
+    <script src="mainpage.js"></script>
+</body>
+
+</html>
