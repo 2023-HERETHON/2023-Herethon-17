@@ -2,12 +2,12 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .forms import ChangeUserForm, CreateUserFrom
+from .forms import UserChangeForm, UserCreationForm
 from .models import User
 
 class UserAdmin(BaseUserAdmin):
-    form=ChangeUserForm
-    add_form=CreateUserFrom
+    form=UserChangeForm
+    add_form=UserCreationForm
 
     list_display=('name','email','profile_img','portfolio','school','bio','star','review','is_admin')
     list_filter=('is_admin',)

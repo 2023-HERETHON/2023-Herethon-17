@@ -1,10 +1,11 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from .models import User
 
 
-class CreateUserFrom(forms.ModelForm):
+class UserCreationForm(forms.ModelForm):
     pwd1=forms.CharField(label='Password',widget=forms.PasswordInput)
     pwd2=forms.CharField(label='Password confirm',widget=forms.PasswordInput)
 
@@ -26,13 +27,20 @@ class CreateUserFrom(forms.ModelForm):
             user.save()
         return user
 
-
-class ChangeUserForm(forms.ModelForm):
+class UserChangeForm(forms.ModelForm):
+    # 관리자 권한
     password=ReadOnlyPasswordHashField()
 
     class Meta:
         model=User
-        fields=('name','email','password', 'profile_img','portfolio','school','bio','star','review','is_admin')
+        fields=('name','email','password', 'profile_img','portfolio','school','bio','star','review')
     
-    def clean_password(self):
-        return self.initial["password"]
+    # def clean_password(self):
+    #     return self.initial["password"]
+
+
+class CustomUserChangeForm(UserChangeForm):
+    # 일반 사용자 권한
+    class Meta:
+        model=get_user_model()
+        fields=('name', 'profile_img','portfolio','school','bio','star','review')
