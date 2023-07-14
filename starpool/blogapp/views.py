@@ -48,43 +48,37 @@ def commentBox(request, id):
 def comment_detail(request, id, comment_id):
     post = get_object_or_404(Post, pk=id)
     comment = get_object_or_404(CommentBox, id=comment_id)
+    reviews = Review.objects.order_by('id')
 
     context = {
         'post':post,
-        'comment': comment
+        'comment': comment,
+        'review' :reviews
     }
     return render(request, 'commentpage.html', context)
 
-def comment_review(request):
+def comment_review(request, id, comment_id):
+
     if request.method == "POST":
-        #rating = int(request.POST.get('rating'))
+        # url에 post:id 필요하니깐 
+        post = get_object_or_404(Post, pk=id)
+        rating = int(request.POST.get('rating'))
         review_pw = request.POST.get('review_pw')
         review = request.POST.get('review')
-        # 비밀번호 일치하는지 확인하기 위해서 id 가져옴
-        comment_id = request.POST.get('comment_id')
-
-        try:
-            comment = CommentBox.objects.get(id=comment_id)
+        # 비밀번호 일치하는지 확인하기 위해서  comment_id 가져옴
+        comment = get_object_or_404(CommentBox, id=comment_id)
 
             # 비번이 같을때
-            if review_pw == comment.comment_pw:
-                review_obj = Review.objects.create(
-                    writer=request.user,
-                    #rating=rating,
-                    review_pw=review_pw,
-                    review=review
-                )
-                # 저장
-                return redirect('comment_detail', id=comment.post.id, comment_id=comment.id)
-            else: 
-                # 비번이 다를때
-                return HttpResponse('비밀번호가 올바르지 않습니다.')
-        
-        except CommentBox.DoesNotExist:
-            # comment_id에 해당하는 CommentBox가 없을때
-            return HttpResponse('해당 댓글을 찾을 수 없습니다.')
-    
-    return render(request, 'commentpage.html')
+        if review_pw == comment.comment_pw:
+            review = Review.objects.create(
+                writer=request.user,
+                rating=rating,
+                review_pw=review_pw,
+                review=review
+            )               
+            # 저장
+            return redirect('blog:comment_detail', id=post.id, comment_id=comment.id)
+      
 
 
 
