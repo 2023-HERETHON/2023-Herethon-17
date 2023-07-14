@@ -1,4 +1,8 @@
-from django.contrib.auth.models import User
+from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Post
+
+from userapp.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, CommentBox, Review
@@ -78,14 +82,3 @@ def comment_review(request, id, comment_id):
             )               
             # 저장
             return redirect('blog:comment_detail', id=post.id, comment_id=comment.id)
-      
-
-
-
-
-
-        
-
-
-
-
