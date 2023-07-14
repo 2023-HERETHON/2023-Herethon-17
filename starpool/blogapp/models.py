@@ -1,6 +1,6 @@
 from django.db import models
 from userapp.models import User
-
+#from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Post(models.Model):
     title = models.CharField(verbose_name="제목", max_length=30)
