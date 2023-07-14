@@ -52,12 +52,12 @@ def commentBox(request, id):
 def comment_detail(request, id, comment_id):
     post = get_object_or_404(Post, pk=id)
     comment = get_object_or_404(CommentBox, id=comment_id)
-    reviews = Review.objects.order_by('id')
+    reviews = Review.objects.filter(comment=comment).order_by('id')
 
     context = {
         'post':post,
         'comment': comment,
-        'review' :reviews
+        'reviews' :reviews
     }
     return render(request, 'commentpage.html', context)
 
@@ -69,14 +69,23 @@ def comment_review(request, id, comment_id):
         comment = get_object_or_404(CommentBox, id=comment_id)
         
         rating = request.POST.get('rating')
-        if rating is None:
+        if rating is None or rating == '':
             rating = 0  # 또는 다른 기본값 설정
+        else:
+            rating = int(rating)  # 문자열을 정수로 변환
+
         review_pw = request.POST.get('review_pw')
         review = request.POST.get('review')
-        # 비밀번호 일치하는지 확인하기 위해서  comment_id 가져옴
-        
+
+        # 평가 등록 전에 선택한 별점이 유효한지 확인
+        if rating < 1 or rating > 5:
+        # 별점이 유효하지 않은 경우 처리
+        # 예: 오류 메시지 설정 또는 기본값으로 대체
+            rating = 0
+
         # 비번이 같을때
         review = Review.objects.create(
+            post=post,
             comment=comment,
             writer=request.user,
             rating=rating,

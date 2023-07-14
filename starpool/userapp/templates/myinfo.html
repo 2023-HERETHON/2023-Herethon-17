@@ -54,24 +54,25 @@
                 <div class="user-info-title">{{ user.bio }}</div>
                 <div class="user-info-content">내용</div>
                 <!-- 수정하기 버튼 -->
-                <button class="edit-button" onclick="location.href='{% url 'update' %}'">
+                <button class="edit-button" onclick="location.href='{% url 'update' user.pk %}'">
                 수정하기
                 </button>
             </div>
             </div>
 
             <!-- 해당 사용자가 작성한 게시글 모아보기 -->
+            {% for cb in com_box %}
             <div class="post-container">
             <div id="post">
                 <div id="userinfo">
                 <img src="./img/profile.png" alt="프로필" class="profile-img" />
                 <div>
-                    <span>사용자 이름</span>
-                    <div class="posttime">2023/07/12</div>
+                    <span>{{ cb.writer }}</span>
+                    <div class="posttime">{{ cb.date }}</div>
                 </div>
                 <div>
                     <!-- 공모전 이름 -->
-                    <div class="contenst-text">2023 아이디어톤</div>
+                    <div class="contenst-text">{{ cb.post.title }}</div>
                     <div>
                     <div class="grade-text">평균 평점</div>
                     <div class="grade">3.5</div>
@@ -80,11 +81,12 @@
                 </div>
                 <hr />
                 <!-- 게시글 내용 -->
-                <div class="content">내용</div>
-                <button onclick="location.href='commentpage.html'">평가 보기</button>
+                <div class="content">{{ cb.content }}</div>
+                <button><a href="{% url 'blog:comment_detail' cb.post.id cb.id %}">평가보기</a></button>
                 <hr />
             </div>
             </div>
+            {% endfor %}
         </wrapper>
 
         <footer>
