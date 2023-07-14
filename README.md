@@ -2,7 +2,7 @@
 2023 여기톤 : HERETHON 17조
 
 
-# STAR POOl
+## STAR POOl
 
 ### 서비스 소개 
 
