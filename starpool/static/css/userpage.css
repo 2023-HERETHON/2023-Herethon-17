@@ -99,6 +99,12 @@ footer {
   border-radius: 50%;
 }
 
+.img-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
 .user-info-title {
   display: flex;
   align-items: center;

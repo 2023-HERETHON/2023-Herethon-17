@@ -1,20 +1,20 @@
 <!-- 프론트 html 적용 완료 -->
 <!-- js 미적용 -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Star Pool</title>
-        <link rel="stylesheet" href="login.css" />
+        <link rel="stylesheet" href="{% static 'css/login.css' %}" />
     </head>
     <body>
         {% block content %}
         <div class="content">
             <div id="logo">
                 <a href="./splash.html"
-                    ><img src="./images/logo_2.png" alt="로그인 - 로고"
+                    ><img src="{% static 'img/logo_2.png' %}" alt="로그인 - 로고"
                 /></a>
                 <h6>STAR POOL과 함께 다양한 경험을 시작하세요</h6>
             </div>

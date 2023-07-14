@@ -1,17 +1,43 @@
 <!-- 프론트 html 적용 완료 -->
+{% load static %}
 <!DOCTYPE html>
 <head> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title></title>
-    <link rel="stylesheet" href="mypage.css" />
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}" />
 </head>
 <body>
-<div id="nav">
-    <div id="logo">starpool</div>
-    <div id="mainpage"><a href="">Main Page</a></div>
-    <div id="mypage"><a href="">My Page</a></div>
-    <div id="login"><a href="">Log In</a></div>
-</div>
+<nav>
+            <div class="nav-item">
+                <a href="{%url 'initial' %}"><img id="logo-img" src="{% static 'img/logo.png' %}" alt="navbar 로고"></img></a>
+            </div>
+            <div class="nav-item">
+                <a href="{%url 'blog:home'%}">
+                    <div id="mainpage">MainPage</div>
+                </a>
+                <!-- 여기 mypage, login, logout url 바꿔주세요!-->
+                {% if user.is_authenticated %}
+                <a href="{%url 'myinfo' user.pk %}">
+                    <div id="mypage">MyPage</div>
+                </a>
+                {% else %}
+                <a href="{%url 'login' %}">
+                    <div id="mypage">MyPage</div>
+                </a>
+                {% endif %}
+            </div>
+            <div class="nav-item">
+                {% if user.is_authenticated %}
+                <a href="{%url 'logout'%}">
+                    <div id="logout">Log Out</div>
+                </a>
+                {% else %}
+                <a href="{%url 'login'%}">
+                    <div id="login">Log In</div>
+                </a>
+                {% endif %}
+            </div>
+        </nav>
 
 
 <a id="title">My page</a>
@@ -43,14 +69,13 @@
             </div>
 
         <!-- 포트폴리오 첨부 -->
-            <div id="pf">
-                <div id="pfvar"><a>포트폴리오</a></div>
-                <div class="filebox">
-                    <input class="upload-name" value="파일선택" placeholder="파일선택">
-                    <label for="file"><i class="fa-solid fa-link"></i></label> 
-                    <input type="file" id="file" name="portfolio">
-                </div>
-            </div>
+        <div id="pf">
+        <div id="pfvar"><a>포트폴리오</a></div>
+        <div class="filebox">
+            <label for="file-input"></label>
+        <input id="file-input" type="file" name="portfolio"/>
+        </div>
+    </div>
         <!-- 학교 입력 -->
             <div id="univ">
                 <div id="univvar"><a>학교</a></div>
@@ -61,16 +86,20 @@
                 <input type="checkbox" name="star" value=1> <a>별점</a>
                 <input type="checkbox" name="review" value=1> <a>리뷰</a>
             </div>
+
+            <div id="password"><a href="{%url 'change_password' user.pk %}">비밀번호 변경</a></div>
+            
         <!-- 수정하기 버튼 -->
-            <input type="submit" value="수정하기"/>
+            <input type="submit" value="수정완료" id="edit"/>
         </form>
         {% endblock  %}
     </div>
 </div>
 
-<div id="footer">
-    <a id="copy">Copyright © Star pool 2023</a>
-</div>
+<footer>
+            <p class="footer">&copy; 2023 HERETHON 오디. STAR POOL ALL RIGHTS RESERVED.
+            </p>
+        </footer>
 
 </body>
 

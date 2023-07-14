@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, CommentBox, Review
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.contrib.auth import get_user_model
 
 
 def home(request):
@@ -58,7 +59,7 @@ def comment_detail(request, id, comment_id):
     context = {
         'post':post,
         'comment': comment,
-        'reviews' :reviews
+        'reviews' :reviews,
     }
     return render(request, 'commentpage.html', context)
 
@@ -83,7 +84,7 @@ def comment_review(request, id, comment_id):
         # 별점이 유효하지 않은 경우 처리
         # 예: 오류 메시지 설정 또는 기본값으로 대체
 
-             rating = 0
+            rating = 0
 
         # 비번이 같을때
         if(comment.comment_pw == review_pw):
@@ -100,3 +101,5 @@ def comment_review(request, id, comment_id):
         else: #비번이 다른경우
             return HttpResponse("비밀번호가 일치하지 않습니다.")
 
+def initial(request):
+    return render(request,'splash.html')

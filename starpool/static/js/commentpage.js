@@ -1,29 +1,30 @@
-const stars = document.querySelectorAll(".rating__star");
-const result = document.querySelector(".rating__result");
-const ratingInput = document.getElementById("rating_input");
+const ratingStars = [...document.getElementsByClassName('rating__star')];
+const ratingResult = document.querySelector('.rating__result');
 
-stars.forEach((star) => {
-  star.addEventListener("click", () => {
-    const selectedStars = document.querySelectorAll(".rated__star");
+printRatingResult(ratingResult);
 
-    // 선택한 별점 개수 계산
-    const ratingCount = selectedStars.length;
+function executeRating(stars, result) {
+  const starClassActive = 'rating__star fas fa-star';
+  const starClassUnactive = 'rating__star far fa-star';
+  const starsLength = stars.length;
+  let i;
+  stars.map((star) => {
+    star.onclick = () => {
+      i = stars.indexOf(star);
 
-    // 선택한 별점 개수를 결과 영역에 표시
-    result.textContent = ratingCount;
-
-    // 선택한 별점 개수를 평가 입력 필드에 설정
-    ratingInput.value = ratingCount;
-
-    // 선택한 별점 개수에 따라 CSS 클래스 변경
-    stars.forEach((star) => {
-      if (star.classList.contains("rated__star")) {
-        star.classList.remove("far");
-        star.classList.add("fas");
+      if (star.className.indexOf(starClassUnactive) !== -1) {
+        printRatingResult(result, i + 1);
+        for (i; i >= 0; --i) stars[i].className = starClassActive;
       } else {
-        star.classList.remove("fas");
-        star.classList.add("far");
+        printRatingResult(result, i);
+        for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
       }
-    });
+    };
   });
-});
+}
+
+function printRatingResult(result, num = 0) {
+  result.textContent = `${num}/5`;
+}
+
+executeRating(ratingStars, ratingResult);

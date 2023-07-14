@@ -21,12 +21,14 @@ from django.conf.urls.static import static
 from blogapp import views
 from django.conf import settings
 from django.conf.urls.static import static
+from blogapp.views import initial
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', include('blogapp.urls', namespace='blog')),
     path('accounts/',include('userapp.urls')),
+    path('',initial, name="initial")
 
 ]
 

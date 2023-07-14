@@ -15,12 +15,37 @@
 </head>
 
 <body>
-    <div id="nav">
-        <div id="logo">starpool</div>
-        <div id="mainpage"><a href="">Main Page</a></div>
-        <div id="mypage"><a href="">My Page</a></div>
-        <div id="login"><a href="">Log In</a></div>
-    </div>
+<nav>
+            <div class="nav-item">
+                <a href="{%url 'initial' %}"><img id="logo-img" src="{% static 'img/logo.png' %}" alt="navbar 로고"></img></a>
+            </div>
+            <div class="nav-item">
+                <a href="{%url 'blog:home'%}">
+                    <div id="mainpage">MainPage</div>
+                </a>
+                <!-- 여기 mypage, login, logout url 바꿔주세요!-->
+                {% if user.is_authenticated %}
+                <a href="{%url 'myinfo' user.pk %}">
+                    <div id="mypage">MyPage</div>
+                </a>
+                {% else %}
+                <a href="{%url 'login' %}">
+                    <div id="mypage">MyPage</div>
+                </a>
+                {% endif %}
+            </div>
+            <div class="nav-item">
+                {% if user.is_authenticated %}
+                <a href="{%url 'logout'%}">
+                    <div id="logout">Log Out</div>
+                </a>
+                {% else %}
+                <a href="{%url 'login'%}">
+                    <div id="login">Log In</div>
+                </a>
+                {% endif %}
+            </div>
+        </nav>
 
     <wrapper>
         <div class="contest-info-container">
@@ -34,7 +59,7 @@
             <div id="post">
                 <!-- 게시글(흰 박스) -->
                 <div id="userinfo">
-                    <a href="userpage.html" class="profile-img"><img src="./img/profile.png" alt="프로필" /></a>
+                    <a href="" class="profile-img"><img src="/media/{{ comment.writer.profile_img }}" alt="프로필" /></a>
                     <div>
                         <span>{{comment.writer}}</span>
                         <div class="posttime">{{comment.date}}</div>
@@ -76,13 +101,15 @@
                             <span>{{request.user.username}}</span>
                             <!--여기가 별점 매기는...-->
                             <div class="rating" name="rating">
-                                <i class="rating__star far fa-star" data-value="1"></i>
-                                <i class="rating__star far fa-star" data-value="2"></i>
-                                <i class="rating__star far fa-star" data-value="3"></i>
-                                <i class="rating__star far fa-star" data-value="4"></i>
-                                <i class="rating__star far fa-star" data-value="5"></i>
-                                <span class="rating__result"></span>
-                                <input type="hidden" name="rating" id="rating_input">
+                                <div class="rating">
+                                    <i class="ratingstar far fa-star"></i>
+                                    <i class="ratingstar far fa-star"></i>
+                                    <i class="ratingstar far fa-star"></i>
+                                    <i class="ratingstar far fa-star"></i>
+                                    <i class="ratingstar far fa-star"></i>
+                                    <span class="ratingresult"></span>
+                                    <input type="hidden" name="rating" id="rating_input">
+                                </div>
                             </div>
 
                             <!-- 평가 코드 입력 -->
@@ -102,9 +129,11 @@
             </div>
         </div>
     </wrapper>
-    <!-- <div id="footer">
-    <a id="copy">Copyright © Star pool 2023</a>
-    </div> -->
+    <footer>
+            <p class="footer">&copy; 2023 HERETHON 오디. STAR POOL ALL RIGHTS RESERVED.
+            </p>
+        </footer>
+
     <script src="{% static 'js/commentpage.js' %}">
     </script>
 </body>

@@ -18,7 +18,7 @@ def signup(request):
                 password=request.POST['password1']
             )
             auth.login(request, user)
-            return redirect('/')
+            return redirect('login')
         
     return render(request, 'signup.html')
 

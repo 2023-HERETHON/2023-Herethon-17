@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Star Pool</title>
+        <link rel="stylesheet" href="{% static 'css/splash.css' %}" />
+        <!-- <link href="{% static 'css/splash.css' %}" rel="stylesheet" /> -->
+    </head>
+    <body>
+        <div class="content">
+        <nav>
+            <div class="nav-item">
+                <a href="{%url 'initial' %}"><img id="logo-img" src="{% static 'img/logo.png' %}" alt="navbar 로고"></img></a>
+            </div>
+            <div class="nav-item">
+                <a href="{%url 'blog:home'%}">
+                    <div id="mainpage">MainPage</div>
+                </a>
+                <!-- 여기 mypage, login, logout url 바꿔주세요!-->
+                {% if user.is_authenticated %}
+                <a href="{%url 'myinfo' user.pk %}">
+                    <div id="mypage">MyPage</div>
+                </a>
+                {% else %}
+                <a href="{%url 'login' %}">
+                    <div id="mypage">MyPage</div>
+                </a>
+                {% endif %}
+            </div>
+            <div class="nav-item">
+                {% if user.is_authenticated %}
+                <a href="{%url 'logout'%}">
+                    <div id="logout">Log Out</div>
+                </a>
+                {% else %}
+                <a href="{%url 'login'%}">
+                    <div id="login">Log In</div>
+                </a>
+                {% endif %}
+            </div>
+        </nav>
+
+            <div id="start">
+                <img id="logo-main" src="./images/logo_3.png" alt="로고 이미지3" >
+                <p class="info">
+                    'STAR POOL'은<br />
+                    사용자의 포트폴리오와 팀원 상호간의 평가 시스템을 기반으로
+                    공모전 참가자들이 자신과 잘 맞는 팀원을 찾을 기회를 제공하는
+                    플랫폼입니다.
+                </p>
+                <a href="./signup.html"
+                    ><div id="start-app">Start STAR POOL</div></a
+                >
+            </div>
+            <div id="func">
+                <div class="item">
+                    <img src="./images/icon_01.png" alt="포트폴리오 조회">
+                    <h3 class="func-title">포트폴리오 조회</h3>
+                    <div class="container">
+                        <p class="func-info">
+                            사용자는 STAR POOL에 회원가입 후 <br />
+                            개인정보와 포트폴리오를 등록할 수 있으며,<br />
+                            다른 사용자의 포트폴리오를 조회할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="./images/icon_02.png" alt="팀 프로젝트 평가">
+                    <h3 class="func-title">팀 프로젝트 평가</h3>
+                    <div class="container">
+                        <p class="func-info">
+                            공모전에 같이 참여한 팀원들은 <br />
+                            서로의 태도, 적극성, 기술적인 역량 등을<br />
+                            평가할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="./images/icon_03.png" alt="공모전 정보 제공">
+                    <h3 class="func-title">공모전 정보 제공</h3>
+                    <div class="container">
+                        <p class="func-info">
+                            STAR POOL은 다양한 공모전 정보를 제공합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer">&copy; 2023 HERETHON 오디. STAR POOL ALL RIGHTS RESERVED.
+            </p>
+        </footer>
+    </body>
+</html>
