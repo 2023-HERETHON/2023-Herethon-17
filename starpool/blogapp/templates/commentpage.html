@@ -1,12 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/commentpage.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <title>commentpage</title>
+    <link rel="stylesheet" href="{% static 'css/commentpage.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
@@ -19,32 +24,34 @@
 
     <wrapper>
         <div class="contest-info-container">
-            <a href="listpage.html"><img src="./img/back-icon.png" alt="뒤로가기" class="back-icon-img" /></a>
+            <a href="{% url 'blog:home' %}"><img src="{% static 'img/back-icon.png' %}" alt="뒤로가기" class="back-icon-img"
+                    onclick="goToMainPage()" /></a>
             <div class="category">기획/아이디어</div>
-            <div class="contest-name">2023 아이디어톤</div>
+            <div class="contest-name">{{post.title}}</div>
         </div>
 
         <div class="post-container">
-            <!-- 게시글(흰 박스) -->
             <div id="post">
+                <!-- 게시글(흰 박스) -->
                 <div id="userinfo">
                     <a href="userpage.html" class="profile-img"><img src="./img/profile.png" alt="프로필" /></a>
                     <div>
-                        <span>사용자 이름</span>
-                        <div class="posttime">2023/07/12</div>
+                        <span>{{comment.writer}}</span>
+                        <div class="posttime">{{comment.date}}</div>
                     </div>
                     <div class="grade-text">평균 평점</div>
                     <div class="grade">3.5</div>
                 </div>
                 <hr />
-                <div class="content">내용</div>
+                <div class="content">{{comment.content}}</div>
                 <hr />
 
+                <!-- 평가 댓글 -->
                 <div class="comment-container">
-                    <!-- 평가 댓글 -->
+                    {% for review in reviews %}
                     <div id="comment">
                         <div class="comment-top">
-                            <span>user1</span>
+                            <span>{{review_obj.id}}</span>
                             <!-- 평가자가 준 별점 만큼 별이 채워집니다 -->
                             <div class="rating">
                                 <i class="rated__star fas fa-star"></i>
@@ -55,43 +62,57 @@
                             </div>
                         </div>
                         <!-- 평가에 입력한 내용이 뜹니다 -->
-                        <div class="comment-content">평가 내용</div>
+                        <div class="comment-content">{{review_obj.review}}</div>
                     </div>
+                    {% endfor %}
                 </div>
+
                 <hr />
 
                 <!-- 평가 입력창 -->
                 <div id="input-comment">
-                    <div class="comment-top">
-                        <span>user1</span>
-                        <div class="rating">
-                            <i class="rating__star far fa-star"></i>
-                            <i class="rating__star far fa-star"></i>
-                            <i class="rating__star far fa-star"></i>
-                            <i class="rating__star far fa-star"></i>
-                            <i class="rating__star far fa-star"></i>
-                            <span class="rating__result"></span>
+                    <form method="post" action="{% url 'blog:comment_review' %}">
+                        {% csrf_token %}
+                        <div class="comment-top">
+                            <!-- 현재 로그인 유저 -->
+                            <span>{{request.user.username}}</span>
+                            <!--여기가 별점 매기는...-->
+                            <div class="rating" name="rating">
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+                                <span class="rating__result"></span>
+                            </div>
+                            <!-- 평가 코드 입력 -->
+                            <div class="code-input-text">평가 코드 입력</div>
+                            <input type="password" class="code-input" name="review_pw" />
                         </div>
-                        <!-- 평가 코드 입력 -->
-                        <div class="code-input-text">평가 코드 입력</div>
-                        <input type="text" class="code-input" />
-                    </div>
-                    <div class="comment-bottom">
-                        <input type="text" placeholder="내용을 입력하세요..." class="comment-input" />
-                        <!-- 평가 등록 버튼 -->
-                        <button type="submit">평가 완료</button>
-                    </div>
+                        <div class="comment-bottom">
+                            <input type="text" placeholder="내용을 입력하세요..." class="comment-input" name="review" />
+                            <!-- 평가 등록 버튼 -->
+                            <button type="submit" onclick="checkPassword()">평가 완료</button>
+                        </div>
+                    </form>
                 </div>
-                <button onclick="location.href='listpage.html'">
-                    목록으로 돌아가기
-                </button>
+                <button>목록으로 돌아가기</button>
+
             </div>
-        </div>
     </wrapper>
     <!-- <div id="footer">
       <a id="copy">Copyright © Star pool 2023</a>
     </div> -->
-    <script src="./js/commentpage.js"></script>
+    <script src="{% static 'js/commentpage.js' %}">
+        function checkPassword() {
+            var review_pw = document.querySelector('.ratingResult').value;
+            if (review_pw === '{{ comment.comment_pw }}') {
+                location.href = "{% url 'blog:comment_review' %}";
+            } else {
+                alert('평가 코드가 일치하지 않습니다.');
+            }
+        }
+    </script>
 </body>
 
 </html>

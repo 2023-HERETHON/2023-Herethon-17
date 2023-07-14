@@ -6,8 +6,9 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-
   justify-content: center;
+
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 hr {
@@ -26,13 +27,13 @@ hr {
 }
 
 /* 
-  #footer {
-    position: absolute;
-    background-color: #0F254E;
-    width: 100%;
-    height: 50px;
-    bottom: 0;
-  } */
+#footer {
+  position: absolute;
+  background-color: #0F254E;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+} */
 
 #logo {
   position: absolute;
@@ -65,22 +66,25 @@ hr {
   gap: 10px;
 
   height: 20px;
-  padding: 5px 8px;
+  padding: 5px 8px 6px 8px;
 
   border-radius: 16px;
   background: #fff;
   border: none;
 
   font-size: 12px;
+  font-style: normal;
   color: #ffa10a;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 12px;
 }
 
 .contest-name {
   color: #505b72;
   font-size: 30px;
+  font-style: normal;
   font-weight: 700;
+  line-height: 20px;
 
   margin-bottom: 5px;
 }
@@ -102,19 +106,36 @@ hr {
 
 #post .content {
   padding-top: 10px;
-  padding-right: 100px;
-  width: 471px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 531px;
   height: 89px;
+
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 #userinfo .grade-text {
+  color: #505b72;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
   position: absolute;
-  right: 50px;
+  right: 55px;
 }
 
 #userinfo .grade {
+  color: #505b72;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
   position: absolute;
-  right: 19px;
+  right: 25px;
 }
 
 #userinfo {
@@ -128,7 +149,6 @@ hr {
 #userinfo .profile-img {
   width: 47px;
   height: 47px;
-  border: 2px solid #505b72;
   margin-left: 23px;
   margin-right: 11px;
   border-radius: 50%;
@@ -141,19 +161,28 @@ hr {
 }
 
 #userinfo span {
+  height: 20px;
+  color: #000;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   margin-top: 10px;
   font-size: 16px;
 }
 
 #userinfo .posttime {
-  font-size: 13px;
   color: #7d7d7d;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
 #post button {
   display: flex;
   width: 146px;
   height: 27px;
+  padding-bottom: 3px;
   align-items: center;
   justify-content: center;
 
@@ -161,6 +190,12 @@ hr {
   background: #0f254e;
   border: none;
   color: #fff;
+
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 
   bottom: 29px;
   cursor: pointer;
@@ -205,9 +240,11 @@ hr {
   margin-bottom: 10px;
   margin-left: 25px;
 
-  font-size: 15px;
-  font-weight: 500;
   color: #636468;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 /* 평가 댓글 추가 */
@@ -230,6 +267,13 @@ hr {
 #input-comment .code-input-text {
   position: absolute;
   right: 120px;
+
+  color: #505b72;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.2px;
 }
 
 #input-comment .code-input {
@@ -240,6 +284,13 @@ hr {
   outline: none;
   right: 31px;
   width: 76px;
+
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.2px;
 }
 
 .comment-bottom {
@@ -258,23 +309,34 @@ hr {
   border: none;
   background: none;
   outline: none;
+  padding-bottom: 10px;
+
+  color: #636468;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 #input-comment .comment-bottom button {
-  width: 100px;
+  width: 80px;
   height: 25px;
-  padding: 5px 10px;
+  padding-bottom: 2px;
   gap: 10px;
 
-  margin-right: 18px;
-  margin-bottom: 16px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 
   border: none;
   border-radius: 5px;
   background: #ffc700;
   color: #fff;
+
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 13px;
-  font-weight: 900;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
 
   cursor: pointer;
 }
@@ -285,11 +347,17 @@ hr {
   width: 150px;
   background: transparent;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 0.3em;
   padding: 5px;
+  padding-left: 10px;
   overflow: hidden;
+
+  color: #505b72;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 .rating__star {
