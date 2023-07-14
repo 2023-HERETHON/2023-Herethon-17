@@ -1,19 +1,58 @@
-{% block content %}
-<div class="wrapper">
-    <div style="text-align: center;">
-        <h1>로그인</h1>
-        <form method="POST">
-            {% csrf_token %}
-            이메일:
-            <br>
-            <input name="email" type="email">
-            <br>
-            비밀번호:
-            <br>
-            <input name="password" type="password">
-            <br><br>
-            <input type="submit" class="btn btn-primary" value="Login">
-        </form>
-    </div>
-</div>
-{% endblock %}
+<!-- 프론트 html 적용 완료 -->
+<!-- js 미적용 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Star Pool</title>
+        <link rel="stylesheet" href="login.css" />
+    </head>
+    <body>
+        {% block content %}
+        <div class="content">
+            <div id="logo">
+                <a href="./splash.html"
+                    ><img src="./images/logo_2.png" alt="로그인 - 로고"
+                /></a>
+                <h6>STAR POOL과 함께 다양한 경험을 시작하세요</h6>
+            </div>
+            <div id="inputs">
+                <form
+                    method="post"
+                    id="login-form"
+                >
+                {% csrf_token %}
+                    <p>이메일</p>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="예&#41; likelion@gmail.com"
+                    />
+
+                    <p>비밀번호</p>
+                    <input type="password" id="password" name="password"/>
+
+                    <br />
+
+                    <input type="submit" value="로그인" />
+                </form>
+            </div>
+            {% endblock %}
+
+            <div id="togo-signup">
+                <p>계정이 없으십니까?&nbsp;</p>
+                <a href="{% url 'signup' %}">회원가입하기</a>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer">
+                &copy; 2023 HERETHON 오디. STAR POOL ALL RIGHTS RESERVED.
+            </p>
+        </footer>
+
+    </body>
+</html>

@@ -1,21 +1,74 @@
-{% block content %}
-<div class="wrapper" style="text-align: center;">
-    <h1>회원가입</h1>
-    <form method="POST">
-        {% csrf_token %}
-        이름: <br>
-        <input name="name" type="text">
-        <br>
-        이메일: <br>
-        <input name="email" type="email">
-        <br>
-        비밀번호: <br>
-        <input name="password1" type="password">
-        <br>
-        비밀번호 확인: <br>
-        <input name="password2" type="password">
-        <br><br>
-        <input type="submit" class="btn btn-primary" value="Sign Up">
-    </form>
-</div>
-{% endblock %}
+<!-- 프론트 html 적용 완료 -->
+<!-- js 미적용 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Star Pool</title>
+        <!-- <link rel="stylesheet" href="signup.css" /> -->
+    </head>
+    <body>
+        {% block content %}
+        <div class="content">
+            <div id="logo">
+                <a href="./splash.html"
+                    ><img src="./images/logo_2.png" alt="회원가입 - 로고"
+                /></a>
+                <h6>STAR POOL과 함께 다양한 경험을 시작하세요</h6>
+            </div>
+            <div id="inputs">
+                <form
+                    method="POST"
+                    id="signup-form"
+                >
+                {% csrf_token %}
+                    <p>이름</p>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="이름을 입력해주세요"
+                    />
+                    <p>이메일</p>
+                    <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="예&#41; likelion@gmail.com"
+                    />
+
+                    <p>비밀번호</p>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password1"
+                        placeholder="영문/숫자/특수문자를 조합 (10자 이상)"
+                    />
+                    <p>비밀번호 확인</p>
+                    <input
+                        type="password"
+                        id="password2"
+                        name="password2"
+                        placeholder="비밀번호를 다시 한 번 입력해주세요"
+                    />
+
+                    <input type="submit" value="가입하기"/>
+                </form>
+            </div>
+            {% endblock %}
+
+            <div id="togo-login">
+                <p>이미 계정이 있으십니까?&nbsp;</p>
+                <a href="{% url 'login' %}">로그인하기</a>
+            </div>
+        </div>
+        <footer>
+            <p class="footer">
+                &copy; 2023 HERETHON 오디. STAR POOL ALL RIGHTS RESERVED.
+            </p>
+        </footer>
+
+    </body>
+</html>
