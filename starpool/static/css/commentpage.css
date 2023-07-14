@@ -1,14 +1,15 @@
 body {
-  background-color: #e5e3ee;
+  background-color: #E5E3EE;
   width: 100%;
   top: 0;
   left: 0;
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 hr {
@@ -19,34 +20,53 @@ hr {
   margin-bottom: 0;
 }
 
-#nav {
+nav {
   background-color: #0f254e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
-  height: 80px;
-  position: absolute;
+  height: 7vh;
+  line-height: 7vh;
 }
 
-/* 
-#footer {
-  position: absolute;
-  background-color: #0F254E;
-  width: 100%;
-  height: 50px;
-  bottom: 0;
-} */
+.nav-item {
+  display: flex;
+  flex-direction: row;
+}
 
-#logo {
-  position: absolute;
-  left: 80px;
+.nav-item>a {
+  text-decoration: none;
   color: #e5e3ee;
-  top: 40%;
+  margin: 0 3vh;
+}
+
+#logo-img {
+  width: 7vh;
+  height: 7vh;
+}
+
+footer {
+  background-color: #0f254e;
+  width: 100%;
+  bottom: 0;
+  height: 7vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  line-height: 7vh;
+}
+
+.footer {
+  margin: 0 auto;
+  color: #e5e3ee;
 }
 
 /* 공모전 이름 */
 .contest-info-container {
   width: 100%;
   height: 30px;
-  margin-top: 117px;
+  margin-top: 35px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -69,18 +89,18 @@ hr {
   padding: 5px 8px 6px 8px;
 
   border-radius: 16px;
-  background: #fff;
+  background: #FFF;
   border: none;
 
   font-size: 12px;
   font-style: normal;
-  color: #ffa10a;
+  color: #FFA10A;
   font-weight: 700;
   line-height: 12px;
 }
 
 .contest-name {
-  color: #505b72;
+  color: #505B72;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -90,17 +110,22 @@ hr {
 }
 
 /* 게시글 */
+.post-container {
+  display: flex;
+  justify-content: center;
+}
+
 #post {
   width: 617px;
   height: 710px;
-  background-color: #fff;
+  background-color: #FFF;
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16));
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  margin-top: 37px;
+  margin-top: 35px;
   margin-bottom: 50px;
 }
 
@@ -119,7 +144,7 @@ hr {
 }
 
 #userinfo .grade-text {
-  color: #505b72;
+  color: #505B72;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
@@ -129,7 +154,7 @@ hr {
 }
 
 #userinfo .grade {
-  color: #505b72;
+  color: #505B72;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
@@ -171,7 +196,7 @@ hr {
 }
 
 #userinfo .posttime {
-  color: #7d7d7d;
+  color: #7D7D7D;
   font-size: 13px;
   font-style: normal;
   font-weight: 300;
@@ -187,11 +212,11 @@ hr {
   justify-content: center;
 
   border-radius: 14px;
-  background: #0f254e;
+  background: #0F254E;
   border: none;
-  color: #fff;
+  color: #FFF;
 
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -205,24 +230,30 @@ hr {
 
 /* 평가 댓글 */
 .comment-container {
-  margin-top: 35px;
-  height: 347px;
-}
-
-#comment {
-  width: 574px;
-  height: 75px;
-  border-radius: 10px;
-  background: #f1f2f6;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 617px;
+  margin-top: 35px;
+  height: 347px;
+  overflow-y: auto;
+}
+
+#comment {
+  width: 550px;
+  height: 75px;
+  border-radius: 10px;
+  background: #F1F2F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .comment-top {
   display: flex;
   flex-direction: row;
-  width: 574px;
+  width: 550px;
   height: 30px;
   align-items: center;
   margin-left: 30px;
@@ -235,7 +266,7 @@ hr {
 
 .comment-content {
   padding-top: 10px;
-  width: 574px;
+  width: 550px;
   height: 23px;
   margin-bottom: 10px;
   margin-left: 25px;
@@ -247,12 +278,13 @@ hr {
   line-height: 20px;
 }
 
+
 /* 평가 댓글 추가 */
 #input-comment {
-  width: 574px;
+  width: 550px;
   height: 75px;
   border-radius: 10px;
-  background: #f1f2f6;
+  background: #F1F2F6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -264,11 +296,18 @@ hr {
   font-size: 16px;
 }
 
+#input-comment .lock-image {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 220px;
+}
+
 #input-comment .code-input-text {
   position: absolute;
-  right: 120px;
+  right: 130px;
 
-  color: #505b72;
+  color: #505B72;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -280,9 +319,9 @@ hr {
   position: absolute;
   background: none;
   border: none;
-  border-bottom: 1px solid #505b72;
+  border-bottom: 1px solid #505B72;
   outline: none;
-  right: 31px;
+  right: 45px;
   width: 76px;
 
   color: #000;
@@ -296,7 +335,7 @@ hr {
 .comment-bottom {
   display: flex;
   flex-direction: row;
-  width: 574px;
+  width: 550px;
   height: 45px;
   align-items: center;
   justify-content: center;
@@ -304,7 +343,7 @@ hr {
 }
 
 #input-comment .comment-input {
-  width: 574px;
+  width: 550px;
   height: 23px;
   border: none;
   background: none;
@@ -329,10 +368,10 @@ hr {
 
   border: none;
   border-radius: 5px;
-  background: #ffc700;
-  color: #fff;
+  background: #FFC700;
+  color: #FFF;
 
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
@@ -348,12 +387,12 @@ hr {
   background: transparent;
   display: flex;
   align-items: center;
-  gap: 0.3em;
+  gap: .3em;
   padding: 5px;
   padding-left: 10px;
   overflow: hidden;
 
-  color: #505b72;
+  color: #505B72;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
@@ -363,12 +402,12 @@ hr {
 .rating__star {
   font-size: 1em;
   cursor: pointer;
-  color: #ffc700;
+  color: #FFC700;
 }
 
 .rated__star {
   font-size: 1em;
-  color: #ffc700;
+  color: #FFC700;
 }
 
 .rating__star:hover {

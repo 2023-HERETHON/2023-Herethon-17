@@ -1,430 +1,420 @@
-@font-face {
-  font-family: "GmarketSansMedium";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* body {
-  background-color: #e5e3ee;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  height: 100%;
-} */
-
-/* #nav {
-  background-color: #0f254e;
-  display: flex;
-  width: 100%;
-  height: 100px;
-  position: absolute;
-}
-
-#footer {
-  display: flex;
-  position: absolute;
-  background-color: #0f254e;
-  width: 100%;
-  height: 50px;
-  bottom: 0;
-  left: 0;
-} */
-
-#logo {
-  position: absolute;
-  left: 80px;
-  color: #e5e3ee;
-  top: 40%;
-}
-
-#mainpage > a {
-  position: absolute;
-  left: 800px;
-  color: #e5e3ee;
-  top: 40%;
-  text-decoration: none;
-}
-#mypage > a {
-  position: absolute;
-  left: 1000px;
-  color: #e5e3ee;
-  top: 40%;
-  text-decoration: none;
-}
-#login > a {
-  position: absolute;
-  left: 1500px;
-  color: #e5e3ee;
-  top: 40%;
-  text-decoration: none;
-}
-
-#copy {
-  position: absolute;
-  color: #e5e3ee;
-  top: 40%;
-  left: 45%;
+body {
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 #wrap {
-  position: fixed;
-  width: 80%;
-  height: 200px;
-  top: 200px;
-  left: 220px;
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    top: 150px;
+    left: 220px;
 }
+
 /* 공모전 검색 버튼 부분 */
 #aside {
-  position: absolute;
-  display: flex;
+    position: absolute;
+    display: flex;
 }
 
 #search {
-  position: absolute;
-  border: none;
-  border-radius: 10px;
-  font-size: medium;
-  width: 300px;
-  height: 55px;
-  font-family: "GmarketSansMedium";
+    position: absolute;
+    border: none;
+    border-radius: 10px;
+    font-size: medium;
+    padding-left: 20px;
+    width: 280px;
+    height: 55px;
 }
 
 .search {
-  position: relative;
-  width: 300px;
+    position: relative;
+    width: 300px;
 }
 
 #img-search {
-  position: absolute;
-  width: 17px;
-  top: 20px;
-  right: 12px;
-  margin: 0;
+    position: absolute;
+    width: 17px;
+    top: 20px;
+    right: 12px;
+    margin: 0;
 }
 
 /* s1이랑 s7동일 */
 /* s2랑 s8동일 */
 
 #s1 {
-  position: absolute;
-  top: 90px;
-  background-color: white;
-  width: 100px;
-  height: 40px;
-  border-radius: 15px;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 90px;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s1 > a {
-  font-size: 13px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 13px;
-  left: 10px;
-  color: #0f254e;
+#s1:hover {
+    background-color: #0f254e;
+
+    &#s1>a {
+        color: #e5e3ee;
+    }
+}
+
+#s1>a {
+    font-size: 13px;
+    color: #0f254e;
 }
 
 #s2 {
-  position: absolute;
-  top: 90px;
-  left: 110px;
-  background-color: white;
-  width: 190px;
-  height: 40px;
-  border-radius: 15px;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 90px;
+    left: 110px;
+    background-color: white;
+    width: 190px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s2 > a {
-  font-size: 14px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 13px;
-  left: 40px;
-  color: #0f254e;
+#s2>a {
+    font-size: 14px;
+    color: #0f254e;
+}
+
+#s2:hover {
+    background-color: #0f254e;
+
+    &#s2>a {
+        color: #e5e3ee;
+    }
 }
 
 #s3 {
-  position: absolute;
-  top: 145px;
-  background-color: white;
-  width: 80px;
-  height: 40px;
-  border-radius: 15px;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 145px;
+    background-color: white;
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s3 > a {
-  font-size: 12px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 15px;
-  left: 8px;
-  color: #0f254e;
+#s3>a {
+    font-size: 12px;
+    color: #0f254e;
+}
+
+#s3:hover {
+    background-color: #0f254e;
+
+    &#s3>a {
+        color: #e5e3ee;
+    }
 }
 
 #s4 {
-  position: absolute;
-  top: 145px;
-  left: 90px;
-  background-color: white;
-  width: 210px;
-  height: 40px;
-  border-radius: 15px;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 145px;
+    left: 90px;
+    background-color: white;
+    width: 210px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s4 > a {
-  font-size: 14px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 13px;
-  left: 45px;
-  color: #0f254e;
+#s4>a {
+    font-size: 14px;
+    color: #0f254e;
+}
+
+#s4:hover {
+    background-color: #0f254e;
+
+    &#s4>a {
+        color: #e5e3ee;
+    }
 }
 
 #s5 {
-  position: absolute;
-  top: 200px;
-  background-color: white;
-  width: 210px;
-  height: 40px;
-  border-radius: 15px;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 200px;
+    background-color: white;
+    width: 210px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s5 > a {
-  font-size: 14px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 13px;
-  left: 50px;
-  color: #0f254e;
+#s5>a {
+    font-size: 14px;
+    color: #0f254e;
+}
+
+#s5:hover {
+    background-color: #0f254e;
+
+    &#s5>a {
+        color: #e5e3ee;
+    }
 }
 
 #s6 {
-  position: absolute;
-  top: 200px;
-  left: 220px;
-  background-color: white;
-  width: 80px;
-  height: 40px;
-  border-radius: 15px;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 200px;
+    left: 220px;
+    background-color: white;
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s6 > a {
-  font-size: 12px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 15px;
-  left: 8px;
-  color: #0f254e;
+#s6>a {
+    font-size: 12px;
+    color: #0f254e;
+}
+
+#s6:hover {
+    background-color: #0f254e;
+
+    &#s6>a {
+        color: #e5e3ee;
+    }
 }
 
 #s8 {
-  position: absolute;
-  top: 255px;
-  left: 110px;
-  background-color: white;
-  width: 190px;
-  height: 40px;
-  border-radius: 15px;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 255px;
+    left: 110px;
+    background-color: white;
+    width: 190px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s8 > a {
-  font-size: 14px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 13px;
-  left: 45px;
-  color: #0f254e;
+#s8>a {
+    font-size: 14px;
+    color: #0f254e;
+}
+
+#s8:hover {
+    background-color: #0f254e;
+
+    &#s8>a {
+        color: #e5e3ee;
+    }
 }
 
 #s7 {
-  position: absolute;
-  top: 255px;
-  background-color: white;
-  width: 100px;
-  height: 40px;
-  border-radius: 15px;
-  border-color: #0f254e;
-  border: 2px solid #0f254e;
+    position: absolute;
+    top: 255px;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    border-color: #0f254e;
+    border: 2px solid #0f254e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#s7 > a {
-  font-size: 13px;
-  font-family: "GmarketSansMedium";
-  position: absolute;
-  top: 13px;
-  left: 10px;
-  color: #0f254e;
+#s7>a {
+    font-size: 13px;
+    color: #0f254e;
 }
 
-/* 공모전 버튼 css 구현 완료 */
+#s7:hover {
+    background-color: #0f254e;
+
+    &#s7>a {
+        color: #e5e3ee;
+    }
+}
 
 /* 공모전 정보 제공하는 곳 css */
 #grid-container {
-  position: absolute;
-  display: grid;
-  left: 350px;
-  grid-template-columns: 1fr 1fr 1fr;
-  /*grid-template-rows: repeat(2, 350px 450px); */
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
-  grid-auto-flow: row;
+    position: absolute;
+    display: grid;
+    left: 350px;
+    grid-template-columns: 330px 330px 330px;
+    gap: 25px;
 }
 
 #gridgrid {
-  display: flex;
-  position: relative;
-  background-color: white;
-  border-radius: 10px;
-  height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    height: 470px;
 }
 
-#poster {
-  border-radius: 10px 10px 0px 0px;
-  width: 330px;
-  height: 200px;
-  object-fit: cover;
+.grid-item {
+    width: 330px;
+    height: 330px;
 }
+
 .item1 {
-  border-radius: 10px 10px 0px 0px;
-  width: 330px;
-  height: 230px;
-  object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
 }
 
 .item2 {
-  border-radius: 10px 10px 0px 0px;
-  width: 330px;
-  height: 230px;
-  object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
 }
 
 #gridsection {
-  position: absolute;
-  display: flex;
-  top: 70%;
-  width: 330px;
+    width: 330px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
 }
+
 #kind {
-  text-align: center;
-  width: 100px;
-  font-weight: bold;
-  font-size: 10px;
-  top: 5px;
-  left: 20px;
-  color: #ffa10a;
-  background-color: #fff6e7;
-  border-radius: 10px;
-  position: absolute;
+    text-align: center;
+    width: 120px;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 4px;
+    margin-left: 20px;
+    color: #ffa10a;
+    background-color: #fff6e7;
+    border-radius: 10px;
 }
 
 #title {
-  font-size: larger;
-  color: #505b72;
-  font-weight: bold;
-  left: 20px;
-  top: 30px;
-  position: absolute;
+    font-size: larger;
+    color: #505b72;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 6px;
 }
 
 #num {
-  font-weight: bold;
-  color: #7f8799;
-  position: absolute;
-  left: 30px;
-  top: 70px;
+    font-weight: bold;
+    color: #7f8799;
+    margin-left: 21px;
 }
 
 #day {
-  font-weight: bold;
-  color: #7f8799;
-  position: absolute;
-  left: 100px;
-  top: 70px;
+    font-weight: bold;
+    color: #7f8799;
+    margin-left: 65px;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  border: none;
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
 body {
-  background-color: #e5e3ee;
+    background-color: #e5e3ee;
 }
 
 /* content(non-footer) */
 .content {
-  min-height: calc(100vh - 7vh);
+    min-height: calc(100vh - 7vh);
 }
+
 /* nav-bar */
 nav {
-  background-color: #0f254e;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  height: 7vh;
-  line-height: 7vh;
+    background-color: #0f254e;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 7vh;
+    line-height: 7vh;
 }
 
 .nav-item {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
-.nav-item > a {
-  text-decoration: none;
-  color: #e5e3ee;
-  margin: 0 3vh;
+.nav-item>a {
+    text-decoration: none;
+    color: #e5e3ee;
+    margin: 0 3vh;
 }
 
 #logo-img {
-  width: 7vh;
-  height: 7vh;
+    width: 7vh;
+    height: 7vh;
 }
 
 /* footer */
 
 footer {
-  background-color: #0f254e;
-  width: 100%;
-  bottom: 0;
-  height: 7vh;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  line-height: 7vh;
+    background-color: #0f254e;
+    width: 100%;
+    bottom: 0;
+    height: 7vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    line-height: 7vh;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer {
-  margin: 0 auto;
-  color: #e5e3ee;
+    margin: 0 auto;
+    color: #e5e3ee;
 }
 
 .scrollbar {
-  width: 250px;
-  height: 250px;
-  overflow-y: scroll;
+    width: 250px;
+    height: 250px;
+    overflow-y: scroll;
 }
+
 /* 스크롤바의 폭 너비 */
 .scrollbar::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  height: 30px;
-  background: #0f254e;
-  border-radius: 10px;
+    height: 30px;
+    background: #0F254E;
+    border-radius: 10px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background: #c7c2da;
+    background: #c7c2da;
 }
