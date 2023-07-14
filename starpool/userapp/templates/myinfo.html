@@ -1,0 +1,21 @@
+{% if user.is_authenticated %}
+<p>{{ user.name }}</p><br>
+<p>{{ user.email }}</p><br>
+<img src="/media/{{ user.profile_img }}"><br>
+
+{% if user.portfolio %}
+<a href="{{ user.portfolio.url }}" download>portfolio</a><br>
+{% endif %}
+
+<p>{{ user.school }}</p><br>
+<p>{{ user.bio }}</p><br>
+<p>{{ user.star }}</p><br>
+<p>{{ user.review }}</p><br>
+
+<a href="{% url 'logout' %}">로그아웃</a>
+<a href="{% url 'update' %}">회원정보수정</a>
+
+
+{% else %}
+<a href="{% url 'login' %}">로그인</a>
+{% endif %}
