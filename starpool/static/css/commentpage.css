@@ -1,0 +1,415 @@
+body {
+  background-color: #E5E3EE;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+hr {
+  background-color: #707070;
+  height: 0.1px;
+  width: 578px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+nav {
+  background-color: #0f254e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 7vh;
+  line-height: 7vh;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item>a {
+  text-decoration: none;
+  color: #e5e3ee;
+  margin: 0 3vh;
+}
+
+#logo-img {
+  width: 7vh;
+  height: 7vh;
+}
+
+footer {
+  background-color: #0f254e;
+  width: 100%;
+  bottom: 0;
+  height: 7vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  line-height: 7vh;
+}
+
+.footer {
+  margin: 0 auto;
+  color: #e5e3ee;
+}
+
+/* 공모전 이름 */
+.contest-info-container {
+  width: 100%;
+  height: 30px;
+  margin-top: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+}
+
+.back-icon-img {
+  width: 30px;
+  height: 30px;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  height: 20px;
+  padding: 5px 8px 6px 8px;
+
+  border-radius: 16px;
+  background: #FFF;
+  border: none;
+
+  font-size: 12px;
+  font-style: normal;
+  color: #FFA10A;
+  font-weight: 700;
+  line-height: 12px;
+}
+
+.contest-name {
+  color: #505B72;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+
+  margin-bottom: 5px;
+}
+
+/* 게시글 */
+.post-container {
+  display: flex;
+  justify-content: center;
+}
+
+#post {
+  width: 617px;
+  height: 710px;
+  background-color: #FFF;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16));
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 35px;
+  margin-bottom: 50px;
+}
+
+#post .content {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 531px;
+  height: 89px;
+
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+#userinfo .grade-text {
+  color: #505B72;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  position: absolute;
+  right: 55px;
+}
+
+#userinfo .grade {
+  color: #505B72;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  position: absolute;
+  right: 25px;
+}
+
+#userinfo {
+  display: flex;
+  flex-direction: row;
+  width: 617px;
+  height: 73px;
+  align-items: center;
+}
+
+#userinfo .profile-img {
+  width: 47px;
+  height: 47px;
+  margin-left: 23px;
+  margin-right: 11px;
+  border-radius: 50%;
+}
+
+#userinfo img {
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+}
+
+#userinfo span {
+  height: 20px;
+  color: #000;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#userinfo .posttime {
+  color: #7D7D7D;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+#post button {
+  display: flex;
+  width: 146px;
+  height: 27px;
+  padding-bottom: 3px;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+  background: #0F254E;
+  border: none;
+  color: #FFF;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  bottom: 29px;
+  cursor: pointer;
+
+  margin-top: 16px;
+}
+
+/* 평가 댓글 */
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 617px;
+  margin-top: 35px;
+  height: 347px;
+  overflow-y: auto;
+}
+
+#comment {
+  width: 550px;
+  height: 75px;
+  border-radius: 10px;
+  background: #F1F2F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.comment-top {
+  display: flex;
+  flex-direction: row;
+  width: 550px;
+  height: 30px;
+  align-items: center;
+  margin-left: 30px;
+  padding-top: 3px;
+}
+
+#comment span {
+  font-size: 16px;
+}
+
+.comment-content {
+  padding-top: 10px;
+  width: 550px;
+  height: 23px;
+  margin-bottom: 10px;
+  margin-left: 25px;
+
+  color: #636468;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+
+/* 평가 댓글 추가 */
+#input-comment {
+  width: 550px;
+  height: 75px;
+  border-radius: 10px;
+  background: #F1F2F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 18px;
+}
+
+#input-comment span {
+  font-size: 16px;
+}
+
+#input-comment .lock-image {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 220px;
+}
+
+#input-comment .code-input-text {
+  position: absolute;
+  right: 130px;
+
+  color: #505B72;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+}
+
+#input-comment .code-input {
+  position: absolute;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #505B72;
+  outline: none;
+  right: 45px;
+  width: 76px;
+
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+}
+
+.comment-bottom {
+  display: flex;
+  flex-direction: row;
+  width: 550px;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 22px;
+}
+
+#input-comment .comment-input {
+  width: 550px;
+  height: 23px;
+  border: none;
+  background: none;
+  outline: none;
+  padding-bottom: 10px;
+
+  color: #636468;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+#input-comment .comment-bottom button {
+  width: 80px;
+  height: 25px;
+  padding-bottom: 2px;
+  gap: 10px;
+
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  border: none;
+  border-radius: 5px;
+  background: #FFC700;
+  color: #FFF;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+
+  cursor: pointer;
+}
+
+/* 별점 기능 */
+.rating {
+  position: relative;
+  width: 150px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: .3em;
+  padding: 5px;
+  padding-left: 10px;
+  overflow: hidden;
+
+  color: #505B72;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.rating__star {
+  font-size: 1em;
+  cursor: pointer;
+  color: #FFC700;
+}
+
+.rated__star {
+  font-size: 1em;
+  color: #FFC700;
+}
+
+.rating__star:hover {
+  filter: drop-shadow(1px 1px 4px gold);
+}

@@ -1,0 +1,123 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+body {
+    background-color: #e5e3ee;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+/* content(non-footer) */
+.content {
+    /* min-height: calc(95vh - 7vh); */
+    width: 40%;
+    height: 30vh;
+    margin: 0 auto;
+    margin-top: 5vh;
+    text-align: center;
+}
+
+/* logo */
+#logo > a > img {
+    width: 40vh;
+}
+
+#logo > h3 {
+    font-size: 17px;
+    text-align: center;
+    /* margin: 0 auto; */
+    margin-bottom: 22px;
+}
+/* inputs */
+
+#inputs {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#login-form {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    margin-bottom: 4px;
+}
+
+.form-title {
+    margin-bottom: 4px;
+    text-align: left;
+    margin-left: 1vh;
+}
+
+#login-form > input {
+    width: 100%;
+    height: 5vh;
+    line-height: 5vh;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 3vh;
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: #f8f8f8;
+    font-size: 11px;
+    font-weight: 500;
+    box-shadow: 2px 2px 2px gray;
+}
+
+#login-form > input[type="submit"] {
+    display: block;
+    width: 25vh;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #0f254e;
+    border-style: none;
+    margin: 0 auto;
+    margin-top: 5vh;
+}
+
+/* togo-signup */
+#togo-signup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.5em;
+}
+
+#togo-signup > p {
+    color: #5b5b5b;
+    font-size: 14px;
+}
+
+#togo-signup > a {
+    text-decoration: none;
+    color: #436482;
+    font-size: 14px;
+}
+
+/* footer */
+
+footer {
+    background-color: #0f254e;
+    width: 100%;
+    bottom: 0;
+    height: 7vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    line-height: 7vh;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer {
+    margin: 0 auto;
+    color: #e5e3ee;
+}
