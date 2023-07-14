@@ -1,12 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/listpage.css'%}" />
     <title>listpage</title>
+    <link rel="stylesheet" href="{% static 'css/listpage.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
@@ -20,55 +23,76 @@
     <wrapper>
         <!-- 공모전 카테고리 및 이름 -->
         <div class="contest-info-container">
-            <a href=""><img src="./img/back-icon.png" alt="뒤로가기" class="back-icon-img" /></a>
+            <img src="{% static 'img/back-icon.png' %}" alt="뒤로가기" class="back-icon-img" onclick="goToMainPage()" />
             <div class="category">기획/아이디어</div>
-            <div class="contest-name">2023 아이디어톤</div>
+            <!--해당 공모전 제목가져오기-->
+            <div class="contest-name">{{ post.title}}</div>
         </div>
 
-        <div class="post-container">
+        <div class="post-container" style="overflow-x: scroll;">
             <!-- 게시글 등록창 -->
-            <div id="input-post">
-                <div id="userinfo">
-                    <img src="./img/profile.png" alt="프로필" class="profile-img" />
-                    <div>
-                        <span>사용자 이름</span>
-                        <div class="posttime">2023/07/12</div>
-                    </div>
-                    <!-- 평가 코드 -->
-                    <div class="code-input-text">평가 코드 설정</div>
-                    <input type="text" class="code-input" />
-                </div>
-                <!-- 게시글 내용 입력 -->
-                <input type="text" placeholder="내용을 입력하세요..." class="content-input" />
-                <hr />
-                <!-- 게시글 등록 버튼 -->
-                <button type="submit">등록</button>
-            </div>
+            <form method="post" action="{% url 'blog:commentBox' post.id%}">
+                {% csrf_token %}
 
-            <!-- 게시글 -->
+                <div id="input-post">
+                    <div id="userinfo">
+                        <img src="./img/profile.png" alt="프로필" class="profile-img" />
+                        <div>
+                            <span>{{ request.user.username }}</span>
+                            <div class="posttime">{{comment.date}}</div>
+                        </div>
+                        <!-- 평가 코드 -->
+                        <div class="code-input-text">평가 코드 설정</div>
+                        <input type="password" class="code-input" id="pw" name="pw" />
+                    </div>
+                    <!-- 게시글 내용 입력 -->
+                    <input type="text" placeholder="내용을 입력하세요..." class="content-input" id="message" name="message" />
+
+                    {% if error_message %}
+                    <div class="error-message">{{ error_message }}</div>
+                    {% endif %}
+
+                    <hr />
+                    <!-- 게시글 등록 버튼 -->
+                    <button type="submit">등록</button>
+
+
+                </div>
+            </form>
+
+            <!-- 여기서 왜 댓글을 관리자 페이지에서 포스트위치를 지정해 줘야만 나오는가...?-->
+            {% for comment in comments %}
             <div id="post">
                 <div id="userinfo">
                     <a href="userpage.html" class="profile-img"><img src="./img/profile.png" alt="프로필" /></a>
                     <div>
-                        <span>사용자 이름</span>
-                        <div class="posttime">2023/07/12</div>
+                        <span>{{comment.writer}}</span>
+                        <div class="posttime">{{ comment.date }}</div>
                     </div>
                     <div class="grade-text">평균 평점</div>
                     <!-- 평가자가 남긴 평점의 평균이 숫자로 띄워집니다 -->
-                    <div class="grade">3.5</div>
+                    <div class="grade"><!--평가가 있을시 --></div>
                 </div>
                 <hr />
                 <!-- 게시글에 입력한 내용이 뜹니다 -->
-                <div class="content">내용</div>
-                <button onclick="location.href='commentpage.html'">평가 보기</button>
+                <div class="content">{{ comment.content }}</div>
+                <button><a href="{% url 'blog:comment_detail' comment.post.id comment.id %}">평가하기</a></button>
                 <hr />
             </div>
+            {% endfor %}
         </div>
     </wrapper>
 
     <div id="footer">
         <a id="copy">Copyright © Star pool 2023</a>
     </div>
+
+    <script>
+        // 뒤로가기 버튼 클릭시 메인페이지
+        function goToMainPage() {
+            location.href = "{% url 'blog:home' %}";
+        }
+    </script>
 </body>
 
 </html>
