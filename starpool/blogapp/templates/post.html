@@ -15,13 +15,14 @@
             <!--이미지 출력-->
             <!-- 이미지 출력이 안됨(db에는 문제없이 잘 저장됨)-->
             {% if post.image %}
-                <img src="{{ post.image.url }}">
+            <img src="{{ post.image.url }}">
             {% endif %}
         </div>
         <div id="gridsection">
             <a id="kind">기획/아이디어</a>
             <div id="title">
-                <a href="{% url 'blog:detail' post.id %}">{{post.title}}</a></div>
+                <a href="{% url 'blog:detail' post.id %}">{{post.title}}</a>
+            </div>
             <a id="num">4</a>
             <a id="day"><i class="fa-solid fa-alarm-clock"></i>{{post.date}}</a>
         </div>
