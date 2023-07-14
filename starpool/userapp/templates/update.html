@@ -1,7 +1,78 @@
-{% block content %}
-<form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button>회원정보수정</button>
-</form>
-{% endblock  %}
+<!-- 프론트 html 적용 완료 -->
+<!DOCTYPE html>
+<head> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title></title>
+    <link rel="stylesheet" href="mypage.css" />
+</head>
+<body>
+<div id="nav">
+    <div id="logo">starpool</div>
+    <div id="mainpage"><a href="">Main Page</a></div>
+    <div id="mypage"><a href="">My Page</a></div>
+    <div id="login"><a href="">Log In</a></div>
+</div>
+
+
+<a id="title">My page</a>
+<div id="wrap">
+    <div id="section">
+        <div id="var"></div>
+        {% block content %}
+        <form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- 이름 -->
+            <div id="name">
+                <div id="namevar"><a>이름</a></div>
+                <input id="nametext" type="text"  placeholder="STAR POOL" name="name">
+            </div>
+        <!-- 사용자 소개 -->
+            <div id="intro">
+                <div id="introvar"><a>사용자 소개</a></div>
+                <input id="introtext" type="text"  placeholder="자신을 소개해보세요." name="bio">
+            </div>
+        <!-- 프로필이미지 -->
+            <div id="ui">
+                <div id="uivar"><a>프로필 사진</a></div>
+                <div id="uisection"><img src="" class="uploadImage"></div>
+                
+                <div id="uiimg">
+                    <input type="file" id="inputImage" value="이미지 선택" name="profile_img">
+                    <button id="sendButton"><i class="fa-solid fa-camera"></i></i></button>
+                </div>
+            </div>
+
+        <!-- 포트폴리오 첨부 -->
+            <div id="pf">
+                <div id="pfvar"><a>포트폴리오</a></div>
+                <div class="filebox">
+                    <input class="upload-name" value="파일선택" placeholder="파일선택">
+                    <label for="file"><i class="fa-solid fa-link"></i></label> 
+                    <input type="file" id="file" name="portfolio">
+                </div>
+            </div>
+        <!-- 학교 입력 -->
+            <div id="univ">
+                <div id="univvar"><a>학교</a></div>
+                <input id="univtext" type="text"  placeholder="대학교입력" name="school">
+            </div> 
+        <!-- 공개범위 -->
+            <div id="open"><a>공개범위</a>
+                <input type="checkbox" name="star" value=1> <a>별점</a>
+                <input type="checkbox" name="review" value=1> <a>리뷰</a>
+            </div>
+        <!-- 수정하기 버튼 -->
+            <input type="submit" value="수정하기"/>
+        </form>
+        {% endblock  %}
+    </div>
+</div>
+
+<div id="footer">
+    <a id="copy">Copyright © Star pool 2023</a>
+</div>
+
+</body>
+
+</html>
+
