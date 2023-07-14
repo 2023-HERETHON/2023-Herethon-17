@@ -39,8 +39,8 @@
                         <span>{{comment.writer}}</span>
                         <div class="posttime">{{comment.date}}</div>
                     </div>
-                    <div class="grade-text">평균 평점</div>
-                    <div class="grade">3.5</div>
+                    <div class="grade-text"><!--평균 평점--></div>
+                    <div class="grade"><!--3.5---></div>
                 </div>
                 <hr />
                 <div class="content">{{comment.content}}</div>
@@ -93,7 +93,7 @@
                         <div class="comment-bottom">
                             <input type="text" placeholder="내용을 입력하세요..." class="comment-input" name="review" />
                             <!-- 평가 등록 버튼 -->
-                            <button type="submit" onclick="checkPassword()">평가 완료</button>
+                            <button type="submit">평가 완료</button>
                         </div>
                     </form>
                 </div>
@@ -105,13 +105,6 @@
     <a id="copy">Copyright © Star pool 2023</a>
     </div> -->
     <script src="{% static 'js/commentpage.js' %}">
-        function checkPassword() {
-            if ('{{review.review_pw}}' === '{{ comment.comment_pw }}') {
-                location.href = "{% url 'blog:comment_review' id=post.id comment_id=comment.id%}";
-            } else {
-                alert('평가 코드가 일치하지 않습니다.');
-            }
-        }
     </script>
 </body>
 

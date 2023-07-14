@@ -9,6 +9,7 @@ from .models import Post, CommentBox, Review
 from django.http import HttpResponse
 from django.http import JsonResponse
 
+
 def home(request):
     posts = Post.objects.all().order_by('-id') # admin에서 생성한 공모전 post 개체 생성 
     return render(request, 'mainpage.html', {'posts':posts})
@@ -84,13 +85,16 @@ def comment_review(request, id, comment_id):
              rating = 0
 
         # 비번이 같을때
-        review = Review.objects.create(
-            post=post,
-            comment=comment,
-            writer=request.user,
-            rating=rating,
-            review_pw=review_pw,
-            review=review
-        )  
-        # 저장
-        return redirect('blog:comment_detail', id=post.id, comment_id=comment.id)
+        if(comment.comment_pw == review_pw):
+            review = Review.objects.create(
+                post=post,
+                comment=comment,
+                writer=request.user,
+                rating=rating,
+                review_pw=review_pw,
+                review=review
+            ) 
+            # 저장
+            return redirect('blog:comment_detail', id=post.id, comment_id=comment.id)
+        else: #비번이 다른경우
+            return HttpResponse("비밀번호가 일치하지 않습니다.")
