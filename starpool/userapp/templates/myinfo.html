@@ -1,21 +1,97 @@
+<!-- 프론트 html 적용 완료 -->
+
 {% if user.is_authenticated %}
-<p>{{ user.name }}</p><br>
-<p>{{ user.email }}</p><br>
-<img src="/media/{{ user.profile_img }}"><br>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>userpage</title>
+        <link rel="stylesheet" href="./css/userpage.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-{% if user.portfolio %}
-<a href="{{ user.portfolio.url }}" download>portfolio</a><br>
-{% endif %}
+    <body>
+        <nav>
+            <div class="nav-item">
+            <a href="#"
+                ><img id="logo-img" src="./images/logo_1.png" alt="navbar 로고"
+            /></a>
+            </div>
+            <div class="nav-item">
+            <a href="./mainpage.html"><div id="mainpage">MainPage</div></a>
+            <a href="#"><div id="mypage">MyPage</div></a>
+            </div>
+            <div class="nav-item">
+            <a href="{% url 'login' %}"><div id="login">Log In</div></a>
+            <a href="{% url 'logout' %}"><div id="logout">Log Out</div></a>
+            </div>
+        </nav>
 
-<p>{{ user.school }}</p><br>
-<p>{{ user.bio }}</p><br>
-<p>{{ user.star }}</p><br>
-<p>{{ user.review }}</p><br>
+        <wrapper>
+            <!-- 사용자 정보 및 소개 -->
+            <div class="user-info-container">
+            <div id="user-info-left">
+                <div class="user-profile-img"><img src="/media/{{ user.profile_img }}"></div>
+                <div class="user-name">{{ user.name }}</div>
+                <div class="user-grade">
+                <span>평균 평점</span>
+                <span>3.5</span>
+                </div>
+                <!-- 포트폴리오 열람 -->
+                {% if user.portfolio %}
+                    <a href="{{ user.portfolio.url }}" class="portfolio-button" download>포트폴리오 보기</a>
+                {% else %}
+                    <button class="portfolio-button">포트폴리오 없음</button>
+                {% endif %}
+            </div>
+            <div id="user-info-right">
+                <div class="user-info-title">{{ user.bio }}</div>
+                <div class="user-info-content">내용</div>
+                <!-- 수정하기 버튼 -->
+                <button class="edit-button" onclick="location.href='{% url 'update' %}'">
+                수정하기
+                </button>
+            </div>
+            </div>
 
-<a href="{% url 'logout' %}">로그아웃</a>
-<a href="{% url 'update' %}">회원정보수정</a>
+            <!-- 해당 사용자가 작성한 게시글 모아보기 -->
+            <div class="post-container">
+            <div id="post">
+                <div id="userinfo">
+                <img src="./img/profile.png" alt="프로필" class="profile-img" />
+                <div>
+                    <span>사용자 이름</span>
+                    <div class="posttime">2023/07/12</div>
+                </div>
+                <div>
+                    <!-- 공모전 이름 -->
+                    <div class="contenst-text">2023 아이디어톤</div>
+                    <div>
+                    <div class="grade-text">평균 평점</div>
+                    <div class="grade">3.5</div>
+                    </div>
+                </div>
+                </div>
+                <hr />
+                <!-- 게시글 내용 -->
+                <div class="content">내용</div>
+                <button onclick="location.href='commentpage.html'">평가 보기</button>
+                <hr />
+            </div>
+            </div>
+        </wrapper>
 
-
-{% else %}
-<a href="{% url 'login' %}">로그인</a>
+        <footer>
+            <p class="footer">
+            &copy; 2023 HERETHON 오디. STAR POOL ALL RIGHTS RESERVED.
+            </p>
+        </footer>
+    </body>
+</html>
 {% endif %}

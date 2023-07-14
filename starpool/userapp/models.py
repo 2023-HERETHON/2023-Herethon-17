@@ -46,8 +46,8 @@ class User(AbstractBaseUser):
     portfolio=models.FileField(upload_to = "pofol/", null=True, blank=True)
     school=models.CharField(max_length=30, blank=True, default='')
     bio=models.CharField(max_length=500, blank=True, default='')
-    star=models.SmallIntegerField(choices = choice, default=1)
-    review=models.SmallIntegerField(choices = choice, default=1)
+    star=models.BooleanField(default = True)
+    review=models.BooleanField(default = True)
     is_active=models.BooleanField(default=True)
     is_admin=models.BooleanField(default=False)
 
