@@ -27,7 +27,7 @@ class CommentBox(models.Model):
 class Review(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name="포스트", null=True)
     comment = models.ForeignKey(CommentBox, on_delete=models.CASCADE, verbose_name="댓글", null=True)
-    writer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="작성자",null=True)
+    writer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="작성자",null=True, related_name='+')
     rating = models.IntegerField(null=True)
     review_pw = models.CharField(verbose_name="리뷰코드", max_length=4, default=None)
     review = models.TextField(verbose_name="리뷰",  max_length=100)
