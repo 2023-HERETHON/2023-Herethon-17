@@ -82,6 +82,7 @@ def comment_review(request, id, comment_id):
         if rating < 1 or rating > 5:
         # 별점이 유효하지 않은 경우 처리
         # 예: 오류 메시지 설정 또는 기본값으로 대체
+
              rating = 0
 
         # 비번이 같을때
@@ -98,3 +99,4 @@ def comment_review(request, id, comment_id):
             return redirect('blog:comment_detail', id=post.id, comment_id=comment.id)
         else: #비번이 다른경우
             return HttpResponse("비밀번호가 일치하지 않습니다.")
+
