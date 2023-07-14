@@ -13,7 +13,7 @@ urlpatterns = [
     path('detail/<int:id>/<int:comment_id>/', views.comment_detail, name='comment_detail'),
 
     # 이제 별점주는 채팅 어케 보내지...?
-    path('commentReview/', views.comment_review, name='comment_review'),
+    path('commentReview/<int:id>/<int:comment_id>/', views.comment_review, name='comment_review'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

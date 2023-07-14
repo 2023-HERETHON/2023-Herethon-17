@@ -51,63 +51,56 @@
                     {% for review in reviews %}
                     <div id="comment">
                         <div class="comment-top">
-                            <span>{{review_obj.id}}</span>
+                            <span>{{review.id}}</span>
                             <!-- 평가자가 준 별점 만큼 별이 채워집니다 -->
                             <div class="rating">
-                                <i class="rated__star fas fa-star"></i>
-                                <i class="rated__star fas fa-star"></i>
-                                <i class="rated__star far fa-star"></i>
-                                <i class="rated__star far fa-star"></i>
-                                <i class="rated__star far fa-star"></i>
                             </div>
+                            <!-- 평가에 입력한 내용이 뜹니다 -->
+                            <div class="comment-content">{{review.review}}</div>
                         </div>
-                        <!-- 평가에 입력한 내용이 뜹니다 -->
-                        <div class="comment-content">{{review_obj.review}}</div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
 
-                <hr />
+                    <hr />
 
-                <!-- 평가 입력창 -->
-                <div id="input-comment">
-                    <form method="post" action="{% url 'blog:comment_review' %}">
-                        {% csrf_token %}
-                        <div class="comment-top">
-                            <!-- 현재 로그인 유저 -->
-                            <span>{{request.user.username}}</span>
-                            <!--여기가 별점 매기는...-->
-                            <div class="rating" name="rating">
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                                <span class="rating__result"></span>
+                    <!-- 평가 입력창 -->
+                    <div id="input-comment">
+                        <form method="post" action="{% url 'blog:comment_review' id=post.id comment_id=comment.id%}">
+                            {% csrf_token %}
+                            <div class="comment-top">
+                                <!-- 현재 로그인 유저 -->
+                                <span>{{request.user.username}}</span>
+                                <!--여기가 별점 매기는...-->
+                                <div class="rating" name="rating">
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <span class="rating__result"></span>
+                                </div>
+                                <!-- 평가 코드 입력 -->
+                                <div class="code-input-text">평가 코드 입력</div>
+                                <input type="password" class="code-input" name="review_pw" />
                             </div>
-                            <!-- 평가 코드 입력 -->
-                            <div class="code-input-text">평가 코드 입력</div>
-                            <input type="password" class="code-input" name="review_pw" />
-                        </div>
-                        <div class="comment-bottom">
-                            <input type="text" placeholder="내용을 입력하세요..." class="comment-input" name="review" />
-                            <!-- 평가 등록 버튼 -->
-                            <button type="submit" onclick="checkPassword()">평가 완료</button>
-                        </div>
-                    </form>
-                </div>
-                <button>목록으로 돌아가기</button>
+                            <div class="comment-bottom">
+                                <input type="text" placeholder="내용을 입력하세요..." class="comment-input" name="review" />
+                                <!-- 평가 등록 버튼 -->
+                                <button type="submit" onclick="checkPassword()">평가 완료</button>
+                            </div>
+                        </form>
+                    </div>
+                    <button>목록으로 돌아가기</button>
 
-            </div>
+                </div>
     </wrapper>
     <!-- <div id="footer">
-      <a id="copy">Copyright © Star pool 2023</a>
+    <a id="copy">Copyright © Star pool 2023</a>
     </div> -->
     <script src="{% static 'js/commentpage.js' %}">
         function checkPassword() {
-            var review_pw = document.querySelector('.ratingResult').value;
-            if (review_pw === '{{ comment.comment_pw }}') {
-                location.href = "{% url 'blog:comment_review' %}";
+            if ('{{review.review_pw}}' === '{{ comment.comment_pw }}') {
+                location.href = "{% url 'blog:comment_review' id=post.id comment_id=comment.id%}";
             } else {
                 alert('평가 코드가 일치하지 않습니다.');
             }

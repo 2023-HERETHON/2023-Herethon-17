@@ -66,19 +66,22 @@ def comment_review(request, id, comment_id):
     if request.method == "POST":
         # url에 post:id 필요하니깐 
         post = get_object_or_404(Post, pk=id)
-        rating = int(request.POST.get('rating'))
+        comment = get_object_or_404(CommentBox, id=comment_id)
+        
+        rating = request.POST.get('rating')
+        if rating is None:
+            rating = 0  # 또는 다른 기본값 설정
         review_pw = request.POST.get('review_pw')
         review = request.POST.get('review')
         # 비밀번호 일치하는지 확인하기 위해서  comment_id 가져옴
-        comment = get_object_or_404(CommentBox, id=comment_id)
-
-            # 비번이 같을때
-        if review_pw == comment.comment_pw:
-            review = Review.objects.create(
-                writer=request.user,
-                rating=rating,
-                review_pw=review_pw,
-                review=review
-            )               
-            # 저장
-            return redirect('blog:comment_detail', id=post.id, comment_id=comment.id)
+        
+        # 비번이 같을때
+        review = Review.objects.create(
+            comment=comment,
+            writer=request.user,
+            rating=rating,
+            review_pw=review_pw,
+            review=review
+        )  
+        # 저장
+        return redirect('blog:comment_detail', id=post.id, comment_id=comment.id)

@@ -5,42 +5,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>mainpage</title>
-    <link href="{% static 'css/mainpage.css' %}" rel="stylesheet" />
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/mainpage.css' %}" />
 </head>
 
 <body>
-    <div id="nav">
-        <div id="logo">starpool</div>
-        <div id="mainpage"><a href="">Main Page</a></div>
-        <div id="mypage"><a href="">My Page</a></div>
-        <div id="login"><a href="">Log In</a></div>
-    </div>
-    <div id="wrap">
-        <div id="aside">
-            <input type="text" id="search" placeholder="   공모전 검색"><a>돋보기 아이콘</a></input>
-            <div id="s1"><a>기획/아이디어</a></div>
-            <div id="s2"><a>영상/UCC/사진</a></div>
-            <div id="s3"><a>광고/마케팅</a></div>
-            <div id="s4"><a>디자인/캐릭터/웹툰</a></div>
-            <div id="s5"><a>웹/모바일/플래시</a></div>
-            <div id="s6"><a>논문/리포트</a></div>
-            <div id="s7"><a>네이밍/슬로건</a></div>
-            <div id="s8"><a>게임/소프트웨어</a></div>
-        </div>
+    <div class="content">
+        <nav>
+            <div class="nav-item">
+                <a href="./splash.html"><img id="logo-img" src="{% static 'img/logo.png' %}" alt="navbar 로고"></img></a>
+            </div>
+            <div class="nav-item">
+                <a href="{%url 'blog:home'%}">
+                    <div id="mainpage">MainPage</div>
+                </a>
+                <!-- 여기 mypage, login, logout url 바꿔주세요!-->
+                <a href="./mypage.html">
+                    <div id="mypage">MyPage</div>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="./login.html">
+                    <div id="login">Log In</div>
+                </a>
+                <a href="#">
+                    <div id="logout">Log Out</div>
+                </a>
+            </div>
+        </nav>
 
-        <div id="grid-container" style="overflow-x:hidden; height:830px; width:1100px;">
-            <!-- post.html을 통해 하나의 데시보드를 반복해서 가져옴-->
-            <!-- pagenation 필요할듯 -->
-            {% for post in posts %}
-            {% include 'post.html'%}
-            {% endfor %}
+        <div id="wrap">
+            <div id="aside">
+                <div class="search">
+                    <input type="text" id="search" placeholder="   공모전 검색">
+                    <img id="img-search" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+                </div>
+                <div id="s1" class="button" onclick="buttonClick('s1')"><a>기획/아이디어</a></div>
+                <div id="s2" class="button" onclick="buttonClick('s2')"><a>영상/UCC/사진</a></div>
+                <div id="s3" class="button" onclick="buttonClick('s3')"><a>광고/마케팅</a></div>
+                <div id="s4" class="button" onclick="buttonClick('s4')"><a>디자인/캐릭터/웹툰</a></div>
+                <div id="s5" class="button" onclick="buttonClick('s5')"><a>웹/모바일/플래시</a></div>
+                <div id="s6" class="button" onclick="buttonClick('s6')"><a>논문/리포트</a></div>
+                <div id="s7" class="button" onclick="buttonClick('s7')"><a>네이밍/슬로건</a></div>
+                <div id="s8" class="button" onclick="buttonClick('s8')"><a>게임/소프트웨어</a></div>
+            </div>
+
+            <div id="grid-container" class="scrollbar" style="overflow-x:hidden; height:600px; width:1100px;">
+                {% for post in posts %}
+                {% include 'post.html'%}
+                {% endfor %}
+            </div>
         </div>
     </div>
 
-    <div id="footer">
-        <a id="copy">Copyright © Star pool 2023</a>
-    </div>
+
+
+    <footer>
+        <p class="footer">&copy; 2023 HERETHON 오디. STAR POOL ALL RIGHTS RESERVED.
+        </p>
+    </footer>
 
     <script src="mainpage.js"></script>
 </body>
