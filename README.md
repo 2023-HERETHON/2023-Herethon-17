@@ -43,7 +43,7 @@
  ├─ 
  ├─ 
  ├─ static # img, css 파일
- ├─ templates # 뼈대 템플릿
+ ├─ templates #  템플릿
  ├─
  └─ manage.py
  
